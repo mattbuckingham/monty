@@ -41,3 +41,17 @@ int main(int argc, char *argv[])
 	}
 	return (0);
 }
+
+void find_opcode(char *opcode, int value)
+{
+	instruction_t op[] = {
+		{'push', opcode_push},
+		{'pall', opcode_pall},
+		{'pint', opcode_pint},
+		{'pop', opcode_pop},
+		{'swap', opcode_swap},
+		{'add', opcode_add},
+		{'nop', opcode_nop},
+		{NULL, NULL}
+	};
+}

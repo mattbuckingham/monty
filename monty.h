@@ -31,4 +31,14 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+void find_opcode(char *opcode, int value)
+
+/*OPCODE FUNCTIONS*/
+void opcode_push(stac_t **stack, unsigned int line_number);
+void opcode_pall(stac_t **stack, unsigned int line_number);
+void opcode_pint(stac_t **stack, unsigned int line_number);
+void opcode_pop(stac_t **stack, unsigned int line_number);
+void opcode_swap(stac_t **stack, unsigned int line_number);
+void opcode_add(stac_t **stack, unsigned int line_number);
+void opcode_nop(stac_t **stack, unsigned int line_number);
 #endif /* _MAIN_H_ */
