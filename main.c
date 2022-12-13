@@ -17,6 +17,27 @@ int main(int argc, char *argv[])
 	//    pass 2nd word as arg
 	//    return
 
-	
+	FILE *file;
+	char *line = NULL;
+	size_t len =0;
+	ssize_t read;
+	char *opcode;
+	char *value;
+	int data, line_num = 0;
+
+	file = fopen(argv[1], "r");
+	if (file == NULL)
+	{
+		fprintf(stderr, "Error: Can't open file%s\n", argv[1]);
+		return (EXIT_FAILURE);
+	}
+	read = getline(&line, &len, &file);
+	while (read != -1)
+	{
+		opcode = strtok(line, " \t\n");
+		value = strtok(NULL, " \t\n");
+		data = atoi(value);
+		line_num = line_num + 1;
+	}
 	return (0);
 }
