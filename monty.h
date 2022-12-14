@@ -1,5 +1,5 @@
-#ifndef _MAIN_H_
-#define _MAIN_H_
+#ifndef _MONTY_H_
+#define _MONTY_H_
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -31,14 +31,14 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-void find_opcode(char *opcode, int value)
+int find_opcode(char *command, stack_t **stack, unsigned int line_number)
 
 /*OPCODE FUNCTIONS*/
-void opcode_push(stac_t **stack, unsigned int line_number);
-void opcode_pall(stac_t **stack, unsigned int line_number);
-void opcode_pint(stac_t **stack, unsigned int line_number);
-void opcode_pop(stac_t **stack, unsigned int line_number);
-void opcode_swap(stac_t **stack, unsigned int line_number);
-void opcode_add(stac_t **stack, unsigned int line_number);
-void opcode_nop(stac_t **stack, unsigned int line_number);
-#endif /* _MAIN_H_ */
+void opcode_push(stack_t **stack, unsigned int line_number);
+void opcode_pall(stack_t **stack, unsigned int line_number);
+void opcode_pint(stack_t **stack, unsigned int line_number);
+void opcode_pop(stack_t **stack, unsigned int line_number);
+void opcode_swap(stack_t **stack, unsigned int line_number);
+void opcode_add(stack_t **stack, unsigned int line_number);
+void opcode_nop(stack_t **stack, unsigned int line_number);
+#endif /* _MONTY_H_ */
