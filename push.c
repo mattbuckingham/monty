@@ -26,8 +26,7 @@ void opcode_push(stack_t **stack, unsigned int line_number)
 
 	len = strlen(arg);
 
-	while (arg[len - 1] == '$'
-	       || arg[len - 1] == ' '
+	while (arg[len - 1] == ' '
 	       || arg[len - 1] == '\t'
 	       || arg[len - 1] == '\n')
 	{
