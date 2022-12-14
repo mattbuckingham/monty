@@ -5,24 +5,15 @@
  * @argc: count of args passed
  * @argv: pointer to array of args passed
  * Return: 0 on success, exit other wise
-  */
-int main(int argc, char *argv[])
+ */
+int main(int argc, char **argv)
 {
-	//check to make sure argv[1] is a path to a file
-	//fopen file
-	//error if file is not there
-	//While loop:
-        //    getline from text file
-	//    strtok the getline
-	//    call corresonding function according to the first word
-	//    pass 2nd word as arg
-	//    return
-
 	FILE *file;
 	char *line = NULL;
 	size_t len =0;
 	ssize_t read;
 	char *command;
+	stack_t *stack = NULL;
 	unsigned int line_number = 1;
 
 	if (argc != 2)
@@ -42,9 +33,12 @@ int main(int argc, char *argv[])
 		command = strtok(line, " \t\n");
 		if (command  == NULL)
 		{
-			line_num = line_num + 1;
+			line_number = line_number + 1;
 			continue;
 		}
+		find_opcode(command, &stack, line_number);
+		read = getline(&line, &len, file);
+		line_number = line_number + 1;
 	}
 	free(line);
 	fclose(file);
@@ -56,22 +50,33 @@ int main(int argc, char *argv[])
  * @command: pointer to char represent command
  * @line_number: count of lines executed
  * @stack: pointer to start of stack
- * Return: 0 on success, 1 on failure
  */
-int find_opcode(char *command, stack_t **stack, unsigned int line_number)
+void find_opcode(char *command, stack_t **stack, unsigned int line_number)
 {
-	int i;
+	int i, len;
 
 	instruction_t op[] = {
 		{"push", opcode_push},
 		{"pall", opcode_pall},
-		{"pint", opcode_pint},
+/*		{"pint", opcode_pint},
 		{"pop", opcode_pop},
 		{"swap", opcode_swap},
 		{"add", opcode_add},
-		{"nop", opcode_nop},
+		{"nop", opcode_nop},*/
+
+
 		{NULL, NULL}
 	};
+	len = strlen(command);
+
+	while (command[len - 1] == '$'
+	       || command[len - 1] == ' '
+	       || command[len - 1] == '\t'
+	       || command[len - 1] == '\n')
+	{
+		command[len - 1] = '\0';
+		len = len - 1;
+	}
 
 	i = 0;
 	while (op[i].opcode != NULL)
@@ -79,13 +84,11 @@ int find_opcode(char *command, stack_t **stack, unsigned int line_number)
 		if (strcmp(op[i].opcode, command) == 0)
 		{
 			op[i].f(stack, line_number);
-			return (0);
+			return;
 		}
 		i = i + 1;
 	}
 
 	fprintf(stderr, "L%d: unknown instruction %s\n", line_number, command);
 	exit(EXIT_FAILURE);
-
-	return (1);
 }
