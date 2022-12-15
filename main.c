@@ -57,7 +57,7 @@ int main(int argc, char **argv)
  */
 void find_opcode(char *command, stack_t **stack, unsigned int line_number)
 {
-	int i, len;
+	int i;
 
 	instruction_t op[] = {
 		{"push", opcode_push},
