@@ -9,7 +9,7 @@
 
 void opcode_push(stack_t **stack, unsigned int line_number)
 {
-	int value, i, len;
+	int value, i;
 	char *arg;
 
 	if (stack == NULL)
