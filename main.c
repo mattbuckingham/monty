@@ -66,9 +66,8 @@ void find_opcode(char *command, stack_t **stack, unsigned int line_number)
 		{"pop", opcode_pop},
 		{"swap", opcode_swap},
 		{"nop", opcode_nop},
-/*
- * 		{"pint", opcode_pint},
- */		{"add", opcode_add},
+ 		{"pint", opcode_pint},
+		{"add", opcode_add},
 
 		{NULL, NULL}
 	};
