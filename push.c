@@ -18,8 +18,8 @@ void opcode_push(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	arg = strtok(NULL, " \t\n");
-	printf("arg:%s\n", arg);
-	//exit(-1);
+	/*printf("arg:%s\n", arg);
+	  exit(-1);*/
 	if (arg == NULL)
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
