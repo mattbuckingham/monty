@@ -75,7 +75,7 @@ void opcode_mul(stack_t **stack, unsigned int line_number)
  * @stack: a pointer to a stack
  * @line_number: the line number of the instruciton
  */
-void opcode_mul(stack_t **stack, unsigned int line_number)
+void opcode_mod(stack_t **stack, unsigned int line_number)
 {
 	int result;
 
