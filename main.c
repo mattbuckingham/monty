@@ -74,14 +74,10 @@ void find_opcode(char *command, stack_t **stack, unsigned int line_number)
 		{"mod", opcode_mod},
 		{NULL, NULL}
 	};
-	len = strlen(command);
 
-	while (command[len - 1] == ' '
-	       || command[len - 1] == '\t'
-	       || command[len - 1] == '\n')
+	if (*command == '#')
 	{
-		command[len - 1] = '\0';
-		len = len - 1;
+		return;
 	}
 
 	i = 0;
