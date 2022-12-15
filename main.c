@@ -10,7 +10,7 @@ int main(int argc, char **argv)
 {
 	FILE *file;
 	char *line = NULL;
-	size_t len =0;
+	size_t len = 0;
 	ssize_t read;
 	char *command;
 	stack_t *stack = NULL;
@@ -59,11 +59,13 @@ void find_opcode(char *command, stack_t **stack, unsigned int line_number)
 	instruction_t op[] = {
 		{"push", opcode_push},
 		{"pall", opcode_pall},
-/*		{"pint", opcode_pint},
-		{"pop", opcode_pop},
-		{"swap", opcode_swap},
-		{"add", opcode_add},
-		{"nop", opcode_nop},*/
+/*
+ *		{"pint", opcode_pint},
+ *		{"pop", opcode_pop},
+ *		{"swap", opcode_swap},
+ *		{"add", opcode_add},
+ *		{"nop", opcode_nop},
+*/
 
 
 		{NULL, NULL}

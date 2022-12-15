@@ -44,15 +44,6 @@ void opcode_push(stack_t **stack, unsigned int line_number)
 	i = 0;
 	while (arg[i] != '\0')
 	{
-		/* Make sure no non digit characters in between digits
-		   push 0w2 = FAIL
-		   push 123 = PASS
-		   push -12e = FAIL
-		   push -12 = PASS
-		   push 222- = FAIL
-		   push w12 = FAIL
-		   push   -12 = PASS
-		*/
 		if (i > 0 && arg[i - 1] >= '0' && arg[i - 1] <= '9'
 			&& (arg[i] < '0' || arg[i] > '9'))
 		{
@@ -70,7 +61,7 @@ void opcode_push(stack_t **stack, unsigned int line_number)
 
 	value = atoi(arg);
 
-	stack_t *new_node = (stack_t*) malloc(sizeof(stack_t));
+	stack_t *new_node = (stack_t *) malloc(sizeof(stack_t));
 
 	if (new_node == NULL)
 	{
