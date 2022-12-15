@@ -69,7 +69,9 @@ void find_opcode(char *command, stack_t **stack, unsigned int line_number)
 		{"pint", opcode_pint},
 		{"add", opcode_add},
 		{"sub", opcode_sub},
-
+		{"div", opcode_div},
+		{"mul", opcode_mul},
+		{"mod", opcode_mod},
 		{NULL, NULL}
 	};
 	len = strlen(command);
