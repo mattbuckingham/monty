@@ -1,5 +1,35 @@
 #include "monty.h"
 
+int is_digit(char digit)
+{
+	if (digit < '0' || digit > '9')
+	{
+		return (0);
+	}
+	return (1);
+}
+
+int is_number(char *number)
+{
+	if (*number == '-')
+	{
+		number = number + 1;
+	}
+	if (*number == '\0')
+	{
+		return (0);
+	}
+	while (*number != '\0')
+	{
+		if (is_digit(*number) == 0)
+		{
+			return (0);
+		}
+		number = number + 1;
+	}
+	return (1);
+}
+
 /**
  * opcode_push - adds new node element to the stack
  * @stack: pointer to pointer to stack_t
@@ -9,7 +39,7 @@
 
 void opcode_push(stack_t **stack, unsigned int line_number)
 {
-	int value, i, len;
+	int value;
 	char *arg;
 
 	if (stack == NULL)
@@ -18,30 +48,12 @@ void opcode_push(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	arg = strtok(NULL, " \t\n");
-	if (arg == NULL)
+	if (arg == NULL || is_number(arg) == 0)
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
-	len = strlen(arg);
-
-	while (arg[len - 1] == '$'
-	       || arg[len - 1] == ' '
-	       || arg[len - 1] == '\t'
-	       || arg[len - 1] == '\n')
-	{
-		arg[len - 1] = '\0';
-		len = len - 1;
-	}
-
-	if (len == 0)
-	{
-		fprintf(stderr, "L%u: usage: push integer\n", line_number);
-		exit(EXIT_FAILURE);
-	}
-
-	i = 0;
 	while (arg[i] != '\0')
 	{
 		if (i > 0 && arg[i - 1] >= '0' && arg[i - 1] <= '9'
@@ -57,7 +69,7 @@ void opcode_push(stack_t **stack, unsigned int line_number)
 			exit(EXIT_FAILURE);
 		}
 		i = i + 1;
-	}
+	}*/
 
 	value = atoi(arg);
 
@@ -72,7 +84,6 @@ void opcode_push(stack_t **stack, unsigned int line_number)
 	new_node->n = value;
 	new_node->prev = NULL;
 	new_node->next = *stack;
-
 	if (*stack != NULL)
 	{
 		(*stack)->prev = new_node;
