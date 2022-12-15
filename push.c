@@ -18,13 +18,15 @@ void opcode_push(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	arg = strtok(NULL, " \t\n");
+	printf("arg:%s\n", arg);
+	//exit(-1);
 	if (arg == NULL)
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
-	len = strlen(arg);
+	/*len = strlen(arg);
 
 	while (arg[len - 1] == ' '
 	       || arg[len - 1] == '\t'
@@ -38,7 +40,7 @@ void opcode_push(stack_t **stack, unsigned int line_number)
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
-	}
+		}*/
 
 	i = 0;
 	while (arg[i] != '\0')
