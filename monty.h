@@ -35,6 +35,7 @@ typedef struct instruction_s
 } instruction_t;
 
 void find_opcode(char *command, stack_t **stack, unsigned int line_number);
+void free_list(stack_t *stack);
 
 /*OPCODE FUNCTIONS*/
 void opcode_push(stack_t **stack, unsigned int line_number);
