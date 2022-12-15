@@ -41,6 +41,7 @@ int main(int argc, char **argv)
 		line_number = line_number + 1;
 	}
 	free(line);
+	free_list(stack);
 	fclose(file);
 	return (0);
 }
@@ -91,4 +92,20 @@ void find_opcode(char *command, stack_t **stack, unsigned int line_number)
 
 	fprintf(stderr, "L%d: unknown instruction %s\n", line_number, command);
 	exit(EXIT_FAILURE);
+}
+
+/**
+ * free_list - function that frees a stack_t list.
+ * @stack: a list to be freed
+*/
+void free_list(stack_t *stack)
+{
+	stack_t *tmp;
+
+	while (stack != NULL)
+	{
+		tmp = stack->next;
+		free(stack);
+		stack = tmp;
+	}
 }
