@@ -62,9 +62,9 @@ void find_opcode(char *command, stack_t **stack, unsigned int line_number)
 	instruction_t op[] = {
 		{"push", opcode_push},
 		{"pall", opcode_pall},
+		{"pop", opcode_pop},
 /*
  *		{"pint", opcode_pint},
- *		{"pop", opcode_pop},
  *		{"swap", opcode_swap},
  *		{"add", opcode_add},
  *		{"nop", opcode_nop},
