@@ -1,5 +1,10 @@
 #include "monty.h"
 
+/**
+ * is_digit - checks to see if a specific character is a digit
+ * @digit: a character to check
+ * Return: 1 if it is a digit, 0 otherwise
+ */
 int is_digit(char digit)
 {
 	if (digit < '0' || digit > '9')
@@ -9,6 +14,11 @@ int is_digit(char digit)
 	return (1);
 }
 
+/**
+ * is_number - checks to see if a char is a numebr
+ * @number: a number to check
+ * Return: 1 if the number is a digit, 0 otherwise
+ */
 int is_number(char *number)
 {
 	if (*number == '-')
@@ -36,7 +46,6 @@ int is_number(char *number)
  * @line_number: Number of lines of executed
  * Return: Nothing
  */
-
 void opcode_push(stack_t **stack, unsigned int line_number)
 {
 	int value;
@@ -53,23 +62,6 @@ void opcode_push(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-
-	while (arg[i] != '\0')
-	{
-		if (i > 0 && arg[i - 1] >= '0' && arg[i - 1] <= '9'
-			&& (arg[i] < '0' || arg[i] > '9'))
-		{
-			fprintf(stderr, "L%u: usage: push integer\n", line_number);
-			exit(EXIT_FAILURE);
-		}
-		if (arg[i] != '-' && arg[i] != ' ' && arg[i] != '\t'
-		    && (arg[i] < '0' || arg[i] > '9'))
-		{
-			fprintf(stderr, "L%u: usage: push integer\n", line_number);
-			exit(EXIT_FAILURE);
-		}
-		i = i + 1;
-	}*/
 
 	value = atoi(arg);
 
